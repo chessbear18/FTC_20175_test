@@ -87,12 +87,12 @@ public class DrivingThingCool extends LinearOpMode {
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate int)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and rigAht.
             // This way it's also easy to just drive straight, or just turn.
-            drive = -gamepad1.left_stick_y;
+            drive =  gamepad1.left_stick_y;
             turn  =  gamepad1.right_stick_x;
 
             // Combine drive and turn for blended motion.
-            left  = drive + turn;
-            right = drive - turn;
+            left  = drive - turn;
+            right = drive + turn;
 
             // Normalize the values so neither exceed +/- 1.0
             max = Math.max(Math.abs(left), Math.abs(right));
