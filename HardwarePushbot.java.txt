@@ -55,8 +55,9 @@ public class HardwarePushbot
     /* Public OpMode members. */
     public DcMotor  leftDrive   = null;
     public DcMotor  rightDrive  = null;
-    //public DcMotor  leftArm     = null;
-    //public Servo    leftClaw    = null;
+    public DcMotor  motorSpin  = null;
+    public DcMotor  arm     = null;
+    public Servo    claw = null;
     //public Servo    rightClaw   = null;
 
     public static final double MID_SERVO       =  0.5 ;
@@ -81,7 +82,8 @@ public class HardwarePushbot
         leftDrive  = hwMap.get(DcMotor.class, "leftDrive");
         rightDrive = hwMap.get(DcMotor.class, "rightDrive");
         motorSpin = hwMap.get(DcMotor.class, "carousel");
-        //leftArm    = hwMap.get(DcMotor.class, "left_arm");
+        arm   = hwMap.get(DcMotor.class, "arm");
+        claw = hwMap.get(Servo.class, "claw");
         leftDrive.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
@@ -101,5 +103,7 @@ public class HardwarePushbot
         //rightClaw = hwMap.get(Servo.class, "right_hand");
         //leftClaw.setPosition(MID_SERVO);
         //rightClaw.setPosition(MID_SERVO);
+        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        claw.setPosition(0.7);
     }
  }
